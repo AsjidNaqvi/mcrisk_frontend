@@ -1,0 +1,509 @@
+{
+ "name": "Meridian Retail Group - Customer 360 CRM (PM2 WBS, 14 subtasks)",
+ "cost_model": "duration_linked",
+ "notes": "Source: PM2 report Tables 2.1, 2.3, 2.4 and 4.2A-4.2C; PM1 Risk Analysis v1.1. All relationships are finish-to-start with no lag. Durations in working days. Risk costs = PM1 percentage x GBP 380,000. Risks are applied once at project level (no 'task' field).",
+ "tasks": [
+  {
+   "id": "A1a",
+   "name": "Preliminary requirements and design",
+   "duration": [
+    18,
+    20,
+    23
+   ],
+   "cost": [
+    21600,
+    24000,
+    27600
+   ],
+   "predecessors": [],
+   "distribution": "pert"
+  },
+  {
+   "id": "A1b",
+   "name": "Requirements finalisation and sign-off",
+   "duration": [
+    9,
+    10,
+    12
+   ],
+   "cost": [
+    12600,
+    14000,
+    16800
+   ],
+   "predecessors": [
+    "A1a"
+   ],
+   "distribution": "pert"
+  },
+  {
+   "id": "A2a",
+   "name": "Initial CRM configuration",
+   "duration": [
+    18,
+    20,
+    24
+   ],
+   "cost": [
+    37800,
+    42000,
+    50400
+   ],
+   "predecessors": [
+    "A1a"
+   ],
+   "distribution": "pert"
+  },
+  {
+   "id": "A2b",
+   "name": "Remaining configuration and verification",
+   "duration": [
+    17,
+    20,
+    24
+   ],
+   "cost": [
+    23800,
+    28000,
+    33600
+   ],
+   "predecessors": [
+    "A2a"
+   ],
+   "distribution": "pert"
+  },
+  {
+   "id": "A3a",
+   "name": "Migration preparation",
+   "duration": [
+    8,
+    10,
+    12
+   ],
+   "cost": [
+    11200,
+    14000,
+    16800
+   ],
+   "predecessors": [
+    "A1b"
+   ],
+   "distribution": "pert"
+  },
+  {
+   "id": "A3b",
+   "name": "Data cleansing, migration and validation",
+   "duration": [
+    30,
+    35,
+    44
+   ],
+   "cost": [
+    34286,
+    40000,
+    50286
+   ],
+   "predecessors": [
+    "A3a"
+   ],
+   "distribution": "pert"
+  },
+  {
+   "id": "A4a",
+   "name": "Initial integration development",
+   "duration": [
+    21,
+    25,
+    32
+   ],
+   "cost": [
+    40320,
+    48000,
+    61440
+   ],
+   "predecessors": [
+    "A2a",
+    "A3a"
+   ],
+   "distribution": "pert"
+  },
+  {
+   "id": "A4b",
+   "name": "Remaining integration and testing",
+   "duration": [
+    16,
+    20,
+    26
+   ],
+   "cost": [
+    27200,
+    34000,
+    44200
+   ],
+   "predecessors": [
+    "A4a"
+   ],
+   "distribution": "pert"
+  },
+  {
+   "id": "A5a",
+   "name": "Reporting requirements and KPI definition",
+   "duration": [
+    9,
+    10,
+    11
+   ],
+   "cost": [
+    8100,
+    9000,
+    9900
+   ],
+   "predecessors": [
+    "A2b",
+    "A4a"
+   ],
+   "distribution": "pert"
+  },
+  {
+   "id": "A5b",
+   "name": "Dashboard development and validation",
+   "duration": [
+    19,
+    20,
+    23
+   ],
+   "cost": [
+    23750,
+    25000,
+    28750
+   ],
+   "predecessors": [
+    "A5a"
+   ],
+   "distribution": "pert"
+  },
+  {
+   "id": "A6a",
+   "name": "User acceptance testing",
+   "duration": [
+    13,
+    15,
+    18
+   ],
+   "cost": [
+    21667,
+    25000,
+    30000
+   ],
+   "predecessors": [
+    "A3b",
+    "A4b",
+    "A5b"
+   ],
+   "distribution": "pert"
+  },
+  {
+   "id": "A6b",
+   "name": "User training and cutover preparation",
+   "duration": [
+    9,
+    10,
+    12
+   ],
+   "cost": [
+    17100,
+    19000,
+    22800
+   ],
+   "predecessors": [
+    "A6a"
+   ],
+   "distribution": "pert"
+  },
+  {
+   "id": "A7a",
+   "name": "Production go-live",
+   "duration": [
+    2,
+    2,
+    2
+   ],
+   "cost": [
+    8000,
+    8000,
+    8000
+   ],
+   "predecessors": [
+    "A6b"
+   ],
+   "distribution": "pert"
+  },
+  {
+   "id": "A7b",
+   "name": "Hypercare and stabilisation",
+   "duration": [
+    7,
+    8,
+    10
+   ],
+   "cost": [
+    10500,
+    12000,
+    15000
+   ],
+   "predecessors": [
+    "A7a"
+   ],
+   "distribution": "pert"
+  }
+ ],
+ "risks": [
+  {
+   "id": "R01",
+   "name": "Requirements volatility",
+   "probability": 0.4,
+   "delay": [
+    5,
+    10,
+    20
+   ],
+   "cost": [
+    7600,
+    15200,
+    30400
+   ],
+   "distribution": "triangular",
+   "metadata": {
+    "pm1_activity_mapping": "A1, A2, A4",
+    "pm2_related_subtasks": [
+     "A1b",
+     "A2b",
+     "A4a",
+     "A4b"
+    ],
+    "note": "Descriptive only. Applied once at project level."
+   }
+  },
+  {
+   "id": "R02",
+   "name": "Requirements ambiguity",
+   "probability": 0.3,
+   "delay": [
+    3,
+    6,
+    12
+   ],
+   "cost": [
+    3800,
+    7600,
+    19000
+   ],
+   "distribution": "triangular",
+   "metadata": {
+    "pm1_activity_mapping": "A1, A6",
+    "pm2_related_subtasks": [
+     "A1a",
+     "A1b",
+     "A6a"
+    ],
+    "note": "Descriptive only. Applied once at project level."
+   }
+  },
+  {
+   "id": "R03",
+   "name": "Low user adoption",
+   "probability": 0.35,
+   "delay": [
+    5,
+    10,
+    20
+   ],
+   "cost": [
+    7600,
+    11400,
+    22800
+   ],
+   "distribution": "triangular",
+   "metadata": {
+    "pm1_activity_mapping": "A7, A6",
+    "pm2_related_subtasks": [
+     "A6b",
+     "A7b"
+    ],
+    "note": "Descriptive only. Applied once at project level."
+   }
+  },
+  {
+   "id": "R04",
+   "name": "Stakeholder unavailability",
+   "probability": 0.3,
+   "delay": [
+    3,
+    7,
+    15
+   ],
+   "cost": [
+    3800,
+    7600,
+    15200
+   ],
+   "distribution": "triangular",
+   "metadata": {
+    "pm1_activity_mapping": "A6, A5",
+    "pm2_related_subtasks": [
+     "A5b",
+     "A6a"
+    ],
+    "note": "Descriptive only. Applied once at project level."
+   }
+  },
+  {
+   "id": "R05",
+   "name": "Communication gaps",
+   "probability": 0.3,
+   "delay": [
+    3,
+    6,
+    12
+   ],
+   "cost": [
+    3800,
+    7600,
+    15200
+   ],
+   "distribution": "triangular",
+   "metadata": {
+    "pm1_activity_mapping": "A4, A2",
+    "pm2_related_subtasks": [
+     "A2b",
+     "A4b"
+    ],
+    "note": "Descriptive only. Applied once at project level."
+   }
+  },
+  {
+   "id": "R06",
+   "name": "Key technical resource loss",
+   "probability": 0.2,
+   "delay": [
+    5,
+    15,
+    40
+   ],
+   "cost": [
+    7600,
+    19000,
+    38000
+   ],
+   "distribution": "triangular",
+   "metadata": {
+    "pm1_activity_mapping": "A2, A3, A4, A5",
+    "pm2_related_subtasks": [
+     "A2a",
+     "A2b",
+     "A3b",
+     "A4a",
+     "A4b",
+     "A5b"
+    ],
+    "note": "Descriptive only. Applied once at project level."
+   }
+  },
+  {
+   "id": "R07",
+   "name": "Legacy data quality",
+   "probability": 0.45,
+   "delay": [
+    5,
+    12,
+    25
+   ],
+   "cost": [
+    7600,
+    19000,
+    34200
+   ],
+   "distribution": "triangular",
+   "metadata": {
+    "pm1_activity_mapping": "A3",
+    "pm2_related_subtasks": [
+     "A3b"
+    ],
+    "note": "Descriptive only. Applied once at project level."
+   }
+  },
+  {
+   "id": "R08",
+   "name": "ERP integration defects",
+   "probability": 0.35,
+   "delay": [
+    4,
+    10,
+    20
+   ],
+   "cost": [
+    7600,
+    15200,
+    30400
+   ],
+   "distribution": "triangular",
+   "metadata": {
+    "pm1_activity_mapping": "A4",
+    "pm2_related_subtasks": [
+     "A4b"
+    ],
+    "note": "Descriptive only. Applied once at project level."
+   }
+  },
+  {
+   "id": "R09",
+   "name": "Vendor delivery delay",
+   "probability": 0.4,
+   "delay": [
+    5,
+    12,
+    30
+   ],
+   "cost": [
+    7600,
+    19000,
+    38000
+   ],
+   "distribution": "triangular",
+   "metadata": {
+    "pm1_activity_mapping": "A4, A6",
+    "pm2_related_subtasks": [
+     "A4a",
+     "A4b",
+     "A6a"
+    ],
+    "note": "Descriptive only. Applied once at project level."
+   }
+  },
+  {
+   "id": "R10",
+   "name": "SaaS platform release or outage",
+   "probability": 0.15,
+   "delay": [
+    2,
+    4,
+    10
+   ],
+   "cost": [
+    3800,
+    3800,
+    11400
+   ],
+   "distribution": "triangular",
+   "metadata": {
+    "pm1_activity_mapping": "A7, A3",
+    "pm2_related_subtasks": [
+     "A3b",
+     "A7a"
+    ],
+    "note": "Descriptive only. Applied once at project level."
+   }
+  }
+ ]
+}
