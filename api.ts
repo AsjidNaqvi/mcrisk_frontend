@@ -1,4 +1,6 @@
-// All numbers shown in the UI come straight from the backend (needed for PM2's T17 check).
+import project from "./crm_project.json";
+import scenarios from "./crm_scenarios.json";
+
 const BASE: string = import.meta.env.VITE_API_URL ?? "/api";
 
 async function j<T = any>(path: string, body?: unknown, method = body ? "POST" : "GET"): Promise<T> {
@@ -15,13 +17,11 @@ export const api = {
   oat: (id: number, b: object) => j(`/projects/${id}/oat`, b),
 };
 
-/** Returns the first project id. If the (free, wiped-on-restart) backend is empty, uploads the CRM project, then S0, M1, M2 in order (M2 extends M1). */
+/** Uses the first project; if the backend is empty, uploads the CRM project, then S0, M1, M2 in order. */
 export async function ensureSeed(): Promise<number> {
   const ps = await api.projects();
   if (ps.length) return ps[0].id;
-  const project = await (await fetch("/seed/crm_project.json")).json();
   const { id } = await j<{ id: number }>("/projects", project);
-  const scenarios = await (await fetch("/seed/crm_scenarios.json")).json();
-  for (const s of scenarios) await j(`/projects/${id}/scenarios`, s);
+  for (const s of scenarios as any[]) await j(`/projects/${id}/scenarios`, s);
   return id;
 }
